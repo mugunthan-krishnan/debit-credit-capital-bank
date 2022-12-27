@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'addcustomerstyle.css' %}">
+  <link rel="stylesheet" href="{% static 'addcustomerfontfamily.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee View</title>
+  <link rel="icon" href="{% static 'banklogo.jpg' %}" type="image/jpg">
+</head>
+<body class="addcustomerbody">
+  <div class="welcomediv">
+    {% if empusername %}
+    <h3 id="welcomeheader">Welcome {{empusername}}</h3>
+    {% endif %}
+  </div>
+  <div class="signupFrm">
+    <div class="wrapper">
+    <form action="{% url 'addconfirmation' %}" class="form2" method="POST" name="customerform">
+    {% csrf_token %}
+      <h1 class="title">Customer Details</h1>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="Firstname" name="firstname">
+        <label for="" class="label">Firstname</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="Middlename" name="middlename">
+        <label for="" class="label">Middlename</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="Lastname" name="lastname">
+        <label for="" class="label">Lastname</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="SSN" name="ssn">
+        <label for="" class="label">SSN</label>
+      </div>
+
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="StreetAddress" name="streetaddr">
+        <label for="" class="label">StreetAddress</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="City" name="city">
+        <label for="" class="label">City</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="State" name="state">
+        <label for="" class="label">State</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="Country" name="country">
+        <label for="" class="label">Country</label>
+      </div>
+      <div class="inputContainer">
+        <input type="text" class="input" placeholder="Zipcode" name="zipcode">
+        <label for="" class="label">Zipcode</label>
+      </div>
+      <input type="submit" class="submitBtn" value="Add">
+    </form>
+    </div>
+  </div>
+  <div class="buttondiv">
+    <button id="logoutId" class="logout" onclick="location.href='{% url 'logout' %}'">
+      Logout
+    </button>
+  </div>
+</body>
+</html>

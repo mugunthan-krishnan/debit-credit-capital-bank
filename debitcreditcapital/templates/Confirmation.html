@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="{% static 'fontfamily.css' %}">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Debit-Credit Capital</title>
+        <link rel="icon" href="{% static 'banklogo.jpg' %}" type="image/jpg">
+    </head>
+    
+    <body class="logoutpage">
+        <div class="banner">
+            <h2>Debit-Credit Capital</h2>
+        </div>
+        <div class="main">
+            <p class="sign" align="center">Customer Added To Database.</p>
+            <button type="submit" class="submit">
+                Add more
+            </button>
+        </div>
+        <div class="buttondiv">
+            <button id="logoutId" class="logout" onclick="location.href='{% url 'logout' %}'">
+                Logout
+            </button>
+        </div>
+
+    </body>
+</html>

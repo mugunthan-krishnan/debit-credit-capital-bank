@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="{% static 'fontfamily.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Customer View</title>
+        <link rel="icon" href="{% static 'banklogo.jpg' %}" type="image/jpg">
+    </head>
+
+    <body class="customerview">
+        <img src="{% static 'banklogo.jpg' %}" class="logo"></img>
+        <div class="cusbanner">
+            <h2>Debit-Credit Capital</h2>
+        </div>
+        <div class="welcomediv">
+            {% if username %}
+            <h3 id="welcomeheader">Welcome {{username}}</h3>
+            {% endif %}
+        </div>
+            <div class="accountmenudiv">
+                <table class="menutable">
+                    <tr>
+                        <th>Accounts</th>
+                    </tr>
+                </table>
+            </div>
+            <div class = "accountdiv">
+                <table class="accounttable">
+                    <tr>
+                        <th>Account Number</th>
+                        <th>Account Type</th>
+                        <th>Opening Date Time</th>
+                        <th>Account Balance</th>
+                    </tr>
+                    <tr>
+                        {% for account in accounts %}
+                        <td>{{ account.acct_no }}</td>
+                        <td>{{ account.acct_type}}</td>
+                        <td>{{ account.open_dt_tm}}</td>
+                        <td>{{ account.account_balance}}</td> 
+                        {% endfor %}
+                    </tr>
+            </div>
+            <div class = "loanmenudiv">
+                <table class="menutable2">
+                    <tr>
+                        <th>Loans</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="loandiv">
+                {% if loans %}
+                <table class="loantable">
+                    <tr>
+                        <th>Loan Number</th>
+                        <th>Loan Amount</th>
+                        <th>Loan Repayment Amount</th>
+                    </tr>
+                    <tr>
+                        {% for loan in loans%}
+                        <td>{{ loan.loan_no }}</td>
+                        <td>{{ loan.loan_amt }}</td>
+                        <td>{{ loan.loan_rpmt_amt }}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+                {% else %}
+                <p id='noloanp'>{{ loanmessage }}</p>
+                {% endif %}
+            </div>
+            <div class = "depositsmenudiv">
+                {% if deposits %}
+                <table class="menutable3">
+                    <tr>
+                        <th>Deposits</th>
+                    </tr>
+                </table>
+                {% else %}
+                <p id='nodepositp'>{{ depositmessage }}</p>
+                {% endif %}
+            </div>
+            <div class="depositsdiv">
+                {% if deposits %}
+                <table class="depositstable">
+                    <tr>
+                        <th>Deposit Number</th>
+                        <th>Deposit Amount</th>
+                        <th>Deposit Date</th>
+                        <th>Maturity Date</th>
+                        <th>Deposit Type</th>
+                        <th>Interest Frequency</th>
+                    </tr>
+                    <tr>
+                        {% for deposit in deposits%}
+                        <td>{{ deposit.deposit_no }}</td>
+                        <td>{{ deposit.deposit_amount }}</td>
+                        <td>{{ deposit.deposit_dt_tm }}</td>
+                        <td>{{ deposit.maturity_dt_tm }}</td>
+                        <td>{{ deposit.deposit_type }}</td>
+                        <td>{{ deposit.interest_freq }}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+                {% endif %}
+            </div>
+            <div class = "cardsmenudiv">
+                {% if cards %}
+                <table class="menutable4">
+                    <tr>
+                        <th>Cards</th>
+                    </tr>
+                </table>
+                {% else %}
+                <p id='nocardp'>{{ cardmessage }}</p>
+                {% endif %}
+            </div>
+            <div class="cardsdiv">
+                {% if cards %}
+                <table class="cardstable">
+                    <tr>
+                        <th>Card Number</th>
+                        <th>Cardholder Name</th>
+                        <th>Card Type</th>
+                        <th>Valid From</th>
+                        <th>Valid To</th>
+                        <th>CVV</th>
+                    </tr>
+                    <tr>
+                        {% for card in cards%}
+                        <td>{{ card.card_no }}</td>
+                        <td>{{ card.cardholder_name }}</td>
+                        <td>{{ card.card_type }}</td>
+                        <td>{{ card.valid_from_dt_tm }}</td>
+                        <td>{{ card.expire_dt_tm }}</td>
+                        <td>{{ card.security_no }}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+                {% endif %}
+            </div>
+        <div class="buttondiv">
+            <button id="logoutId" class="logout" onclick="location.href='{% url 'logout' %}'">
+                Logout
+            </button>
+        </div>
+    </body>
+</html>

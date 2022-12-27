@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="{% static 'fontfamily.css' %}">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Logout Successful</title>
+        <link rel="icon" href="{% static 'banklogo.jpg' %}" type="image/jpg">
+    </head>
+    
+    <body class="logoutpage">
+        <div class="banner">
+            <h2>Debit-Credit Capital</h2>
+        </div>
+        <div class="main">
+            <p class="sign" align="center">You have logged out successfully.</p>
+            <button onclick="location.href='{% url 'landingpage' %}'" type="submit" class="submit">
+                Sign In
+            </button>
+        </div>
+    </body>
+</html>
